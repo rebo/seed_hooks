@@ -19,7 +19,7 @@ fn my_button() -> Node<Msg> {
     let count = use_state(|| 0);
 
     div![
-        count,
+        count.get(),
         button![count.mouse_ev(Ev::Click, |count, _| *count += 1), "Click me"],
     ]
 }

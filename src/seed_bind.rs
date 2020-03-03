@@ -11,6 +11,17 @@ impl<Ms> UpdateElLocal<El<Ms>> for (seed::Attrs, seed::EventHandler<Ms>) {
     }
 }
 
+// pub trait UpdateElLocal<T> {
+//     fn update_el(self, el: &mut T);
+// }
+
+// impl<Ms> UpdateElLocal<El<Ms>> for (seed::Attrs, seed::EventHandler<Ms>) {
+//     fn update_el(self, el: &mut El<Ms>) {
+//         self.0.update_el(el);
+//         self.1.update_el(el);
+//     }
+// }
+
 pub fn bind<Ms: Default, T: 'static + std::str::FromStr + std::fmt::Display>(
     attr: At,
     val: StateAccess<T>,

@@ -2,12 +2,14 @@
 
 mod ev_handlers;
 mod seed_bind;
+mod update_el;
 mod utils;
 
 pub use ev_handlers::StateAccessEventHandlers;
 pub use seed_bind::{bind, UpdateElLocal};
+pub use update_el::StateAccessUpdateEl;
 pub use utils::{
-    after_render, after_render_once, get_html_element_by_id, handle_drop_types,
+    after_render, after_render_once, get_html_element_by_id, handle_unmount,
     request_animation_frame,
 };
 

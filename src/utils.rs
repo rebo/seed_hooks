@@ -39,8 +39,8 @@ pub fn get_html_element_by_id(id: &str) -> Option<web_sys::HtmlElement> {
     }
 }
 
-pub fn handle_drop_types<Ms>() -> Node<Ms> {
-    comp_state::execute_and_remove_drop_types();
+pub fn handle_unmount<Ms>() -> Node<Ms> {
+    comp_state::execute_and_remove_unmounts();
     comp_state::reset_unseen_id_list();
     empty![]
 }
