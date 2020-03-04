@@ -1,6 +1,6 @@
 [package]
 name = "seed_hooks"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["rebo <rebotfc@gmail.com>"]
 edition = "2018"
 description = "Local state for Seed web apps"
@@ -13,7 +13,7 @@ seed = "^0.6.0"
 # seed = {git = "https://github.com/seed-rs/seed.git"}
 wasm-bindgen = "^0.2.55"
 # comp_state = { path = "../comp_state"}
-comp_state = "0.2.6"
+comp_state = "0.2.7"
 [dev-dependencies]
 wasm-bindgen-test = "0.3.8" 
 
