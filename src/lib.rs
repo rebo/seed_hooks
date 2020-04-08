@@ -1,11 +1,15 @@
 #![feature(track_caller)]
 
 mod ev_handlers;
+pub mod fetch;
+pub mod form;
+mod schedule_update;
 mod seed_bind;
 mod update_el;
 mod utils;
 
 pub use ev_handlers::StateAccessEventHandlers;
+pub use schedule_update::{register_app, schedule_update};
 pub use seed_bind::{bind, UpdateElLocal};
 pub use update_el::StateAccessUpdateEl;
 pub use utils::{

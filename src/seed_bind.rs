@@ -1,13 +1,13 @@
 use comp_state::StateAccess;
 use seed::{prelude::*, *};
 pub trait UpdateElLocal<T> {
-    fn update(self, el: &mut T);
+    fn update_el(self, el: &mut T);
 }
 
 impl<Ms> UpdateElLocal<El<Ms>> for (seed::Attrs, seed::EventHandler<Ms>) {
-    fn update(self, el: &mut El<Ms>) {
-        self.0.update(el);
-        self.1.update(el);
+    fn update_el(self, el: &mut El<Ms>) {
+        self.0.update_el(el);
+        self.1.update_el(el);
     }
 }
 
@@ -22,7 +22,7 @@ impl<Ms> UpdateElLocal<El<Ms>> for (seed::Attrs, seed::EventHandler<Ms>) {
 //     }
 // }
 
-pub fn bind<Ms: Default, T: 'static + std::str::FromStr + std::fmt::Display>(
+pub fn bind<Ms: 'static, T: 'static + std::str::FromStr + std::fmt::Display>(
     attr: At,
     val: StateAccess<T>,
 ) -> (seed::virtual_dom::attrs::Attrs, seed::EventHandler<Ms>) {
@@ -34,7 +34,6 @@ pub fn bind<Ms: Default, T: 'static + std::str::FromStr + std::fmt::Display>(
             if let Ok(parsed_type) = ev.parse::<T>() {
                 val.set(parsed_type);
             }
-            Ms::default()
         }),
     )
 }
