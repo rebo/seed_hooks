@@ -7,6 +7,7 @@ mod schedule_update;
 mod seed_bind;
 mod update_el;
 mod utils;
+pub mod style;
 
 pub use ev_handlers::StateAccessEventHandlers;
 pub use schedule_update::{register_app, schedule_update};

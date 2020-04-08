@@ -19,6 +19,24 @@ where
         event: Ev,
         func: F,
     ) -> seed::EventHandler<Ms>;
+
+  
+    fn on_click<
+        F: FnOnce(&mut T) -> () + 'static + Clone,
+        Ms : 'static,
+    >(
+        &self,
+        func: F,
+    ) -> seed::EventHandler<Ms>;
+
+        fn on_input<
+        F: FnOnce(&mut T, String) -> () + 'static + Clone,
+        Ms : 'static,
+    >(
+        &self,
+        func: F,
+    ) -> seed::EventHandler<Ms>;
+
 }
 
 impl<T> StateAccessEventHandlers<T> for StateAccess<T>
@@ -50,4 +68,30 @@ where
     
         })
     }
+
+        fn on_click<
+        F: FnOnce(&mut T) -> () + 'static + Clone,
+        Ms : 'static,
+    >(
+        &self,
+        func: F,
+    ) -> seed::EventHandler<Ms> {
+        let accessor = *self;
+        mouse_ev(Ev::Click, move |_| {
+            accessor.update(|val| func(val));
+    
+        })
+    }
+
+        fn on_input<F: FnOnce(&mut T, String) -> () + 'static + Clone ,Ms : 'static,>(
+            &self,
+            func: F,
+        ) -> seed::EventHandler<Ms> {
+            let accessor = *self;
+            input_ev(Ev::Input, move |text| {
+                accessor.update(|val| func(val, text));
+            })
+        }
+
+
 }
