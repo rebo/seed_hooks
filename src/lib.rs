@@ -1,8 +1,8 @@
 #![feature(track_caller)]
 
 mod ev_handlers;
-pub mod fetch;
-pub mod form;
+// pub mod fetch;
+// pub mod form;
 mod schedule_update;
 mod seed_bind;
 mod update_el;
