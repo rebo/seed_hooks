@@ -9,6 +9,7 @@ mod update_el;
 mod utils;
 pub mod style;
 
+pub use style::measures::{px,rgba};
 pub use ev_handlers::StateAccessEventHandlers;
 pub use schedule_update::{register_app, schedule_update};
 pub use seed_bind::{bind, UpdateElLocal};

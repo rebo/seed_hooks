@@ -577,7 +577,7 @@ where
                 }
 
                 self.set(fd.clone());
-                log!("set it!");
+                // log!("set it!");
             }),
         )
     }
