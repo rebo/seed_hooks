@@ -1,7 +1,7 @@
 [package]
 
 name = "seed_hooks"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["rebo <rebotfc@gmail.com>"]
 edition = "2018"
 description = "Local state for Seed web apps"
