@@ -1,7 +1,7 @@
 // all of this is super alpha and most likely broken so dont use this just yet
 
 
-use comp_state::*;
+use atomic_hooks::*;
 use seed::prelude::*;
 
 use seed::browser::fetch::FetchError;
@@ -16,7 +16,7 @@ pub fn fetch_string_once<'a>(
 ) -> StateAccess<Option<FetchResult<String>>> {
     let id = topo::Id::current();
 
-    if !comp_state::state_exists_for_topo_id::<Option<FetchResult<String>>>(id) {
+    if !atomic_hooks::state_exists_for_topo_id::<Option<FetchResult<String>>>(id) {
         let result = use_state_current(|| None);
         fetch_string(request.clone(), result);
     } else {
@@ -63,7 +63,7 @@ where
 {
     let id = topo::Id::current();
 
-    if !comp_state::state_exists_for_topo_id::<FetchData<T, R>>(id) {
+    if !atomic_hooks::state_exists_for_topo_id::<FetchData<T, R>>(id) {
         let result = use_state_current(|| FetchData {
             result: None,
             request: request.clone(),

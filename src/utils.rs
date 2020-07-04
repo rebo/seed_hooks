@@ -1,4 +1,4 @@
-use comp_state::{do_once, topo, StateAccess};
+use atomic_hooks::{do_once, topo, StateAccess};
 use seed::{prelude::*, *};
 use std::cell::RefCell;
 use std::rc::Rc;
@@ -39,8 +39,8 @@ pub fn get_html_element_by_id(id: &str) -> Option<web_sys::HtmlElement> {
     }
 }
 
-pub fn handle_unmount<Ms>() -> Node<Ms> {
-    comp_state::execute_and_remove_unmounts();
-    comp_state::reset_unseen_id_list();
-    empty![]
-}
+// pub fn handle_unmount<Ms>() -> Node<Ms> {
+//     atomic_hooks::execute_and_remove_unmounts();
+//     atomic_hooks::reset_unseen_id_list();
+//     empty![]
+// }

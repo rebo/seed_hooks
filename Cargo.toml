@@ -14,8 +14,9 @@ seed = "0.7.0"
 # seed = "^0.6.0"
 # seed = {path = "../rebo_seed"}
 
-comp_state = "0.2.8"
-# comp_state = { path = "../comp_state"} 
+atomic_hooks = "0.1.0"
+# atomic_hooks = { path = "../atomic_hooks"} 
+# atomic_hooks = { path = "../atom_state"} 
 
 lazy_static = "1.4.0"
 wasm-bindgen = "^0.2.62"

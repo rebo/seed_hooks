@@ -3,7 +3,7 @@
 
 use crate::seed_bind::UpdateElLocal;
 
-use comp_state::*;
+use atomic_hooks::*;
 use seed::virtual_dom::attrs::Attrs;
 use seed::{prelude::*, *};
 use serde::{de::DeserializeOwned, Serialize};

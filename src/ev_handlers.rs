@@ -1,4 +1,4 @@
-use comp_state::StateAccess;
+use atomic_hooks::StateAccess;
 use seed::prelude::*;
 
 pub trait StateAccessEventHandlers<T>

@@ -1,4 +1,4 @@
-use comp_state::{CloneState, StateAccess};
+use atomic_hooks::*;
 use seed::prelude::*;
 
 pub trait StateAccessUpdateEl<T> {
@@ -9,6 +9,16 @@ impl<Ms, T> StateAccessUpdateEl<El<Ms>> for StateAccess<T>
 where
     T: seed::virtual_dom::update_el::UpdateEl<Ms> + 'static + Clone,
 {
+    fn update_el(self, el: &mut El<Ms>) {
+        self.get().update_el(el);
+    }
+}
+
+pub trait LocalUpdateEl2<T> {
+    fn update_el(self, el: &mut T);
+}
+
+impl<Ms: 'static,T,U,A> LocalUpdateEl2<El<Ms>> for ReactiveStateAccess<T,U,A> where T: UpdateEl<Ms> + 'static + Clone{
     fn update_el(self, el: &mut El<Ms>) {
         self.get().update_el(el);
     }

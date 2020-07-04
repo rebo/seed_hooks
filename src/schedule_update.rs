@@ -1,9 +1,13 @@
-use comp_state::{clone_state_with_topo_id, set_state_with_topo_id};
+use atomic_hooks::{clone_state_with_topo_id, set_state_with_topo_id,TopoKey};
 use seed::{prelude::*, *};
 use wasm_bindgen::JsCast;
 
+
 thread_local! {
-    static ROOT_ID : comp_state::topo::Id = comp_state::topo::Id::current();
+    static ROOT_ID : atomic_hooks::TopoKey = TopoKey{
+        ctx:None,
+        id: atomic_hooks::topo::Id::current()
+    };
 }
 
 pub fn register_app<Ms: 'static, Mdl, Vw: IntoNodes<Ms> + 'static>(

@@ -62,5 +62,5 @@ where it is called.
 
 - currently seed_hooks exposes a clone to stored values via `get()` and to non-Clone types with `get_with()`
 
-- seed_hooks is a Seed specific wrapper around the comp_state crate.
+- seed_hooks is a Seed specific wrapper around the atomic_hooks crate.
 
