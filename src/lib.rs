@@ -8,7 +8,7 @@ mod update_el;
 mod utils;
 pub use ev_handlers::StateAccessEventHandlers;
 pub use schedule_update::{register_app, schedule_update};
-pub use seed_bind::{bind, UpdateElLocal};
+pub use seed_bind::{UpdateElLocal, InputBind};
 pub use update_el::{StateAccessUpdateEl, LocalUpdateEl2};
 pub use utils::{
     after_render, after_render_once, get_html_element_by_id, //handle_unmount,

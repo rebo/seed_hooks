@@ -18,8 +18,8 @@ pub trait LocalUpdateEl2<T> {
     fn update_el(self, el: &mut T);
 }
 
-impl<Ms: 'static,T,U,A> LocalUpdateEl2<El<Ms>> for ReactiveStateAccess<T,U,A> where T: UpdateEl<Ms> + 'static + Clone{
-    fn update_el(self, el: &mut El<Ms>) {
-        self.get().update_el(el);
-    }
-}
+// impl<Ms: 'static,T,U,A> LocalUpdateEl2<El<Ms>> for ReactiveStateAccess<T,U,A> where T: UpdateEl<Ms> + 'static + Clone{
+//     fn update_el(self, el: &mut El<Ms>) {
+//         self.observe().update_el(el);
+//     }
+// }

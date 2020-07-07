@@ -1,4 +1,5 @@
-use atomic_hooks::StateAccess;
+use atomic_hooks::Observable;
+use atomic_hooks::{StateAccess,ReactiveStateAccess, OverloadedUpdateStateAccess};
 use seed::{prelude::*, *};
 pub trait UpdateElLocal<T> {
     fn update_el(self, el: &mut T);
@@ -11,29 +12,37 @@ impl<Ms> UpdateElLocal<El<Ms>> for (seed::Attrs, seed::EventHandler<Ms>) {
     }
 }
 
-// pub trait UpdateElLocal<T> {
-//     fn update_el(self, el: &mut T);
-// }
 
-// impl<Ms> UpdateElLocal<El<Ms>> for (seed::Attrs, seed::EventHandler<Ms>) {
-//     fn update_el(self, el: &mut El<Ms>) {
-//         self.0.update_el(el);
-//         self.1.update_el(el);
-//     }
-// }
-
-pub fn bind<Ms: 'static, T: 'static + std::str::FromStr + std::fmt::Display>(
-    attr: At,
-    val: StateAccess<T>,
-) -> (seed::virtual_dom::attrs::Attrs, seed::EventHandler<Ms>) {
-    let val_disp = val.get_with(|v| format!("{}", v));
-
-    (
-        attrs!(attr => val_disp),
-        input_ev(Ev::Input, move |ev| {
-            if let Ok(parsed_type) = ev.parse::<T>() {
-                val.set(parsed_type);
-            }
-        }),
-    )
+pub trait InputBind<Ms,T> where Ms: 'static, T: 'static+ std::str::FromStr + std::fmt::Display {
+   fn bind( self, attr: At) -> (seed::virtual_dom::attrs::Attrs, seed::EventHandler<Ms>);
 }
+
+
+impl <Ms,T> InputBind<Ms,T>   for StateAccess<T>   where Ms: 'static, T: 'static+ std::str::FromStr + std::fmt::Display {
+    fn bind( self, attr: At) -> (seed::virtual_dom::attrs::Attrs, seed::EventHandler<Ms>){
+        let val_disp = self.observe_with(|v| format!("{}", v));
+            (
+            attrs!(attr => val_disp),
+            input_ev(Ev::Input, move |ev| {
+                if let Ok(parsed_type) = ev.parse::<T>() {
+                    self.set(parsed_type);
+                }
+            }),
+        )
+    }
+}
+
+impl <Ms,T,U,A> InputBind<Ms,T>   for ReactiveStateAccess<T,U,A>   where Ms: 'static, T: 'static+ std::str::FromStr + std::fmt::Display , Self: OverloadedUpdateStateAccess<T>, U: 'static, A:'static{
+    fn bind( self, attr: At) -> (seed::virtual_dom::attrs::Attrs, seed::EventHandler<Ms>){
+        let val_disp = self.observe_with(|v| format!("{}", v));
+            (
+            attrs!(attr => val_disp),
+            input_ev(Ev::Input, move |ev| {
+                if let Ok(parsed_type) = ev.parse::<T>() {
+                    self.set(parsed_type);
+                }
+            }),
+        )
+    }
+}
+
