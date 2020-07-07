@@ -16,7 +16,7 @@ seed = { git = "https://github.com/seed-rs/seed", rev = "0a538f0" }
 
 # atomic_hooks = "0.1.0"
 # atomic_hooks = { path = "../atomic_hooks"} 
-atomic_hooks = { path = "../atom_state"} 
+atomic_hooks = { git = "https://github.com/rebo/atomic_hooks", rev ="192361"}
 
 lazy_static = "1.4.0"
 wasm-bindgen = "^0.2.62"
