@@ -1,7 +1,7 @@
 [package]
 
 name = "seed_hooks"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["rebo <rebotfc@gmail.com>"]
 edition = "2018"
 description = "Local state for Seed web apps"
@@ -15,9 +15,9 @@ seed = { git = "https://github.com/seed-rs/seed", rev = "0a538f0" }
 # seed = {path = "../rebo_seed"}
 
 # atomic_hooks = "0.1.0"
-# atomic_hooks = { path = "../atomic_hooks"} 
-atomic_hooks = { git = "https://github.com/rebo/atomic_hooks", rev ="192361"}
-
+atomic_hooks = { path = "../atom_state"} 
+# atomic_hooks = { git = "https://github.com/rebo/atomic_hooks", rev ="192361"}
+gloo-timers = { version = "0.2.1", features = ["futures"] }
 lazy_static = "1.4.0"
 wasm-bindgen = "^0.2.62"
 
