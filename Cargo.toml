@@ -10,7 +10,7 @@ license = "Apache-2.0 OR MIT"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html66========68
 
 [dependencies]
-# seed = { git = "https://github.com/seed-rs/seed", rev = "0a538f0" }
+seed = { git = "https://github.com/seed-rs/seed", rev = "0a538f0" }
 # seed = "^0.6.0"
 # seed = {path = "../seed"}
 
