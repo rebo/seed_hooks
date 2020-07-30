@@ -1,14 +1,11 @@
-#![feature(track_caller)]
-
 mod ev_handlers;
 
-mod schedule_update;
+
 mod seed_bind;
 mod update_el;
 mod utils;
 mod reactive_enhancements;
 pub use ev_handlers::StateAccessEventHandlers;
-pub use schedule_update::{register_app, schedule_update};
 pub use seed_bind::{UpdateElLocal, InputBind};
 pub use update_el::{StateAccessUpdateEl, LocalUpdateEl2};
 pub use utils::{
