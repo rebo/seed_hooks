@@ -1,6 +1,8 @@
 use atomic_hooks::Observable;
-use atomic_hooks::{StateAccess,Atom};
 use seed::{prelude::*, *};
+use atomic_hooks::state_access::StateAccess;
+use atomic_hooks::atom::Atom;
+
 pub trait UpdateElLocal<T> {
     fn update_el(self, el: &mut T);
 }

@@ -1,5 +1,7 @@
-use atomic_hooks::{StateAccess,Atom};
+
 use seed::prelude::*;
+use crate::state_access::StateAccess;
+use atomic_hooks::atom::Atom;
 
 
 pub trait StateAccessEventHandlers<T>
