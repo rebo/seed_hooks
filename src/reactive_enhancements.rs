@@ -1,5 +1,9 @@
 use seed::{prelude::*,*};
 use atomic_hooks::*;
+use atomic_hooks::atom::Atom;
+use atomic_hooks::state_access::{CloneState, StateAccess};
+use atomic_hooks::reversible_atom::ReversibleAtom;
+
 pub trait ReactiveEnhancements<T> {
     fn debounce_update<F:FnOnce(&mut T) -> () + 'static,Ms, Mdl, INodes>(self, timeout: f64, app: Option<App<Ms, Mdl, INodes>>, func: F) where
     INodes: IntoNodes<Ms> + 'static,;
@@ -60,7 +64,7 @@ where
 }
 
 
-impl<T> ReactiveEnhancements<T> for AtomUndo<T>
+impl<T> ReactiveEnhancements<T> for ReversibleAtom<T>
 where
     T: 'static + Clone,
 {

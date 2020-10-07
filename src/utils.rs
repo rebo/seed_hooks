@@ -1,8 +1,9 @@
-use atomic_hooks::{do_once, topo, StateAccess};
+use atomic_hooks::{do_once, topo};
 use seed::{prelude::*, *};
 use std::cell::RefCell;
 use std::rc::Rc;
 use wasm_bindgen::JsCast;
+use atomic_hooks::state_access::StateAccess;
 
 #[topo::nested]
 pub fn after_render_once<F: Fn(f64) -> () + 'static + Clone>(func: F) -> StateAccess<bool> {
